@@ -1,0 +1,1654 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<meta name="theme-color" content="#09090b" />
+		<meta name="description" content="Un pequeño rincón para alguien inolvidable. Una historia, unos recuerdos y una pregunta." />
+		<meta name="color-scheme" content="dark" />
+		<title>Para Mareanny 🖤</title>
+
+		<!-- Favicon -->
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖤</text></svg>" />
+
+		<!-- Tipografías -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+		<!-- Tailwind CSS (CDN) -->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						colors: {
+							night: '#09090b',
+							ink: '#121212',
+							crimson: {
+								50: '#fef2f2',
+								100: '#fee2e2',
+								200: '#fecaca',
+								300: '#fca5a5',
+								400: '#f87171',
+								500: '#ef4444',
+								600: '#dc2626',
+								700: '#b91c1c',
+								800: '#991b1b',
+								900: '#7f1d1d',
+								950: '#450a0a',
+							},
+						},
+						fontFamily: {
+							sans: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+							display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+						},
+						boxShadow: {
+							'glow-red': '0 0 60px -18px rgba(220, 38, 38, 0.55)',
+							'soft-red': '0 20px 70px -30px rgba(220, 38, 38, 0.55)',
+						},
+					},
+				},
+			};
+		</script>
+
+		<!-- Activa las animaciones de entrada solo cuando JavaScript está disponible -->
+		<script>
+			document.documentElement.classList.add('js');
+		</script>
+
+		<style>
+			/* ============================================================
+       Base y variables
+       ============================================================ */
+			:root {
+				color-scheme: dark;
+				--crimson: #dc2626;
+				--crimson-soft: #e63946;
+				--night: #09090b;
+			}
+
+			html {
+				scroll-behavior: smooth;
+				scrollbar-color: #7f1d1d #09090b;
+			}
+
+			body {
+				min-width: 320px;
+				overflow-x: hidden;
+				background: var(--night);
+				color: #fafafa;
+				font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+				-webkit-font-smoothing: antialiased;
+				text-rendering: optimizeLegibility;
+			}
+
+			body.lightbox-open {
+				overflow: hidden;
+			}
+
+			::selection {
+				background: var(--crimson);
+				color: #fff;
+			}
+
+			::-webkit-scrollbar {
+				width: 10px;
+			}
+			::-webkit-scrollbar-track {
+				background: var(--night);
+			}
+			::-webkit-scrollbar-thumb {
+				background: #3f1d1d;
+				border: 2px solid var(--night);
+				border-radius: 999px;
+			}
+
+			section[id] {
+				scroll-margin-top: 1.5rem;
+			}
+
+			[hidden] {
+				display: none !important;
+			}
+
+			/* ============================================================
+       Fondo ambiental
+       ============================================================ */
+			.site-bg {
+				position: fixed;
+				inset: 0;
+				z-index: -10;
+				overflow: hidden;
+				background:
+					radial-gradient(ellipse 80% 55% at 50% -12%, rgba(220, 38, 38, 0.2), transparent 62%), radial-gradient(ellipse 55% 45% at 105% 38%, rgba(127, 29, 29, 0.16), transparent 65%),
+					radial-gradient(ellipse 50% 40% at -10% 78%, rgba(127, 29, 29, 0.1), transparent 65%), #09090b;
+			}
+
+			.site-bg::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				opacity: 0.25;
+				background-image: radial-gradient(rgba(255, 255, 255, 0.14) 0.6px, transparent 0.6px);
+				background-size: 26px 26px;
+				-webkit-mask-image: radial-gradient(ellipse at 50% 15%, black 0%, transparent 68%);
+				mask-image: radial-gradient(ellipse at 50% 15%, black 0%, transparent 68%);
+			}
+
+			.site-bg::after {
+				content: '';
+				position: absolute;
+				left: 50%;
+				top: -28rem;
+				width: 46rem;
+				height: 46rem;
+				max-width: 160vw;
+				max-height: 160vw;
+				transform: translateX(-50%);
+				border-radius: 50%;
+				background: rgba(220, 38, 38, 0.09);
+				filter: blur(120px);
+			}
+
+			/* ============================================================
+       Utilidades visuales
+       ============================================================ */
+			.glass {
+				background: linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.012));
+				border: 1px solid rgba(255, 255, 255, 0.08);
+				-webkit-backdrop-filter: blur(18px);
+				backdrop-filter: blur(18px);
+			}
+
+			.glass-red {
+				background: linear-gradient(145deg, rgba(220, 38, 38, 0.14), rgba(10, 10, 11, 0.5) 55%, rgba(255, 255, 255, 0.018));
+				border: 1px solid rgba(220, 38, 38, 0.24);
+				-webkit-backdrop-filter: blur(18px);
+				backdrop-filter: blur(18px);
+			}
+
+			.text-gradient {
+				background: linear-gradient(180deg, #ffffff 5%, #fecaca 42%, #dc2626 105%);
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+			}
+
+			.text-gradient-red {
+				background: linear-gradient(100deg, #f87171, #dc2626 55%, #991b1b);
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+			}
+
+			.hairline {
+				height: 1px;
+				background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+			}
+
+			.hairline-red {
+				height: 1px;
+				background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.45), transparent);
+			}
+
+			.no-scrollbar {
+				-ms-overflow-style: none;
+				scrollbar-width: none;
+			}
+			.no-scrollbar::-webkit-scrollbar {
+				display: none;
+			}
+
+			/* ============================================================
+       Animaciones de entrada
+       ============================================================ */
+			@keyframes hero-in {
+				from {
+					opacity: 0;
+					transform: translateY(22px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.hero-enter {
+				opacity: 0;
+				animation: hero-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+			}
+
+			.js [data-reveal] {
+				opacity: 0;
+				transform: translateY(28px);
+				transition:
+					opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+					transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+				transition-delay: var(--reveal-delay, 0ms);
+			}
+
+			.js [data-reveal].is-visible {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			@keyframes pulse-ring {
+				0% {
+					opacity: 0.75;
+					transform: scale(0.96);
+				}
+				70%,
+				100% {
+					opacity: 0;
+					transform: scale(1.18);
+				}
+			}
+
+			.pulse-btn::before,
+			.pulse-btn::after {
+				content: '';
+				position: absolute;
+				inset: -5px;
+				z-index: -1;
+				border: 1px solid rgba(239, 68, 68, 0.5);
+				border-radius: 9999px;
+				animation: pulse-ring 2.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+			}
+
+			.pulse-btn::after {
+				animation-delay: 1.35s;
+			}
+
+			@keyframes float-softly {
+				0%,
+				100% {
+					transform: translate3d(0, 0, 0);
+				}
+				50% {
+					transform: translate3d(0, -12px, 0);
+				}
+			}
+
+			.float-softly {
+				animation: float-softly 7s ease-in-out infinite;
+			}
+
+			@keyframes drift {
+				0%,
+				100% {
+					transform: translate3d(0, 0, 0) rotate(-8deg);
+					opacity: 0.24;
+				}
+				50% {
+					transform: translate3d(10px, -20px, 0) rotate(8deg);
+					opacity: 0.55;
+				}
+			}
+
+			.drift {
+				animation: drift 9s ease-in-out infinite;
+			}
+
+			@keyframes scroll-dot {
+				0% {
+					opacity: 0;
+					transform: translateY(-2px);
+				}
+				45% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+					transform: translateY(10px);
+				}
+			}
+
+			.scroll-dot {
+				animation: scroll-dot 2s ease-in-out infinite;
+			}
+
+			/* ============================================================
+       Botón "No" juguetón
+       ============================================================ */
+			#no-btn {
+				transition:
+					left 0.42s cubic-bezier(0.34, 1.56, 0.64, 1),
+					top 0.42s cubic-bezier(0.34, 1.56, 0.64, 1),
+					transform 0.2s ease,
+					background-color 0.2s ease,
+					border-color 0.2s ease;
+				will-change: left, top;
+			}
+
+			@keyframes little-shake {
+				0%,
+				100% {
+					transform: rotate(0deg);
+				}
+				25% {
+					transform: rotate(-2.5deg);
+				}
+				75% {
+					transform: rotate(2.5deg);
+				}
+			}
+
+			.shake {
+				animation: little-shake 0.35s ease-in-out;
+			}
+
+			/* ============================================================
+       Lightbox
+       ============================================================ */
+			#lightbox {
+				opacity: 0;
+				visibility: hidden;
+				transition:
+					opacity 0.32s ease,
+					visibility 0.32s ease;
+			}
+
+			#lightbox.is-open {
+				opacity: 1;
+				visibility: visible;
+			}
+
+			#lightbox .lb-img {
+				transform: scale(0.965);
+				transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+			}
+
+			#lightbox.is-open .lb-img {
+				transform: scale(1);
+			}
+
+			/* ============================================================
+       Detalles finos
+       ============================================================ */
+			.memory-card img {
+				transition:
+					transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+					filter 0.5s ease;
+			}
+
+			.memory-card:hover img {
+				transform: scale(1.045);
+				filter: saturate(1.06);
+			}
+
+			.detail-card {
+				transition:
+					border-color 0.3s ease,
+					background-color 0.3s ease,
+					transform 0.3s ease;
+			}
+
+			.detail-card:hover {
+				border-color: rgba(220, 38, 38, 0.28);
+				transform: translateY(-3px);
+			}
+
+			.heart-particle {
+				position: fixed;
+				z-index: 120;
+				pointer-events: none;
+				font-size: 16px;
+				line-height: 1;
+				animation: heart-rise 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+			}
+
+			@keyframes heart-rise {
+				0% {
+					opacity: 0;
+					transform: translate(-50%, -50%) scale(0.4);
+				}
+				20% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+					transform: translate(calc(-50% + var(--heart-x, 0px)), calc(-50% + var(--heart-y, -110px))) scale(1.2) rotate(var(--heart-r, 0deg));
+				}
+			}
+
+			/* Respeta la preferencia de menos movimiento */
+			@media (prefers-reduced-motion: reduce) {
+				html {
+					scroll-behavior: auto;
+				}
+				*,
+				*::before,
+				*::after {
+					animation-duration: 0.01ms !important;
+					animation-iteration-count: 1 !important;
+					transition-duration: 0.01ms !important;
+					scroll-behavior: auto !important;
+				}
+				.js [data-reveal] {
+					opacity: 1;
+					transform: none;
+				}
+			}
+		</style>
+	</head>
+
+	<body class="relative bg-night font-sans text-zinc-100">
+		<!-- Fondo decorativo fijo -->
+		<div class="site-bg" aria-hidden="true"></div>
+
+		<!-- Barra de progreso de lectura -->
+		<div class="fixed inset-x-0 top-0 z-50 h-[2px] bg-white/5" aria-hidden="true">
+			<div id="scroll-progress" class="h-full w-0 bg-gradient-to-r from-crimson-900 via-crimson-500 to-crimson-300 shadow-[0_0_12px_rgba(239,68,68,0.7)]"></div>
+		</div>
+
+		<main>
+			<!-- ============================================================
+         01. HERO / BIENVENIDA
+         ============================================================ -->
+			<section id="inicio" class="relative flex min-h-screen min-h-[100svh] items-center overflow-hidden">
+				<!-- Decoración del hero -->
+				<div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+					<div class="absolute left-1/2 top-[44%] h-[72vmin] w-[72vmin] -translate-x-1/2 -translate-y-1/2 rounded-full border border-red-500/10"></div>
+					<div class="absolute left-1/2 top-[44%] h-[48vmin] w-[48vmin] -translate-x-1/2 -translate-y-1/2 rounded-full border border-red-500/[0.07]"></div>
+					<div class="absolute left-1/2 top-[44%] h-[30vmin] w-[30vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-600/10 blur-[70px]"></div>
+					<div class="float-softly absolute right-[12%] top-[24%] h-1.5 w-1.5 rounded-full bg-red-500 shadow-[0_0_16px_4px_rgba(239,68,68,0.45)]"></div>
+					<div class="float-softly absolute left-[14%] top-[63%] h-1 w-1 rounded-full bg-white/50 shadow-[0_0_12px_3px_rgba(255,255,255,0.18)]" style="animation-delay: -2s"></div>
+					<div class="drift absolute right-[18%] top-[68%] text-sm">🖤</div>
+					<div class="drift absolute left-[18%] top-[34%] text-[10px]" style="animation-delay: -4s">🤍</div>
+					<div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night to-transparent"></div>
+				</div>
+
+				<!-- Marca discreta -->
+				<header class="absolute inset-x-0 top-0 z-20 mx-auto flex max-w-6xl items-center justify-between px-5 pt-[max(1.25rem,env(safe-area-inset-top))] sm:px-8">
+					<a
+						href="#inicio"
+						class="group inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.32em] text-white/70 transition hover:text-white"
+						aria-label="Volver al inicio">
+						<span>M</span>
+						<span class="text-crimson-500 transition group-hover:scale-125">♥</span>
+						<span>E</span>
+					</a>
+					<span class="text-[9px] uppercase tracking-[0.28em] text-zinc-600 sm:text-[10px]">Una carta abierta</span>
+				</header>
+
+				<div class="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-5 pb-24 pt-28 text-center sm:px-8 sm:pt-32">
+					<div
+						class="hero-enter inline-flex items-center gap-2.5 rounded-full border border-red-500/20 bg-red-500/[0.06] px-4 py-2 text-[10px] uppercase tracking-[0.22em] text-red-200/80 backdrop-blur-sm sm:text-[11px]"
+						style="animation-delay: 80ms">
+						<span class="relative flex h-1.5 w-1.5">
+							<span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-70"></span>
+							<span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-red-400"></span>
+						</span>
+						Hecha solo para ti
+					</div>
+
+					<h1 class="hero-enter mt-7 max-w-4xl" style="animation-delay: 180ms">
+						<span class="block text-[11px] font-medium uppercase tracking-[0.5em] text-zinc-500 sm:text-xs">Para</span>
+						<span class="mt-2 block font-display text-[clamp(4.1rem,17vw,9.5rem)] font-medium italic leading-[0.84] tracking-[-0.045em]">
+							<span class="text-gradient">Mareanny</span>
+							<span class="ml-1 inline-block align-top text-[clamp(2rem,7vw,4.5rem)] not-italic">🖤</span>
+						</span>
+					</h1>
+
+					<p class="hero-enter mt-7 max-w-md text-sm font-light leading-relaxed text-zinc-400 sm:text-base" style="animation-delay: 300ms">Un pequeño rincón para alguien inolvidable...</p>
+
+					<div class="hero-enter mt-10" style="animation-delay: 430ms">
+						<a
+							href="#detalles"
+							id="open-story"
+							class="pulse-btn group relative isolate inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-crimson-600 px-8 py-4 text-sm font-medium text-white shadow-glow-red transition duration-300 hover:-translate-y-0.5 hover:bg-crimson-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-400 sm:px-9 sm:text-[15px]">
+							<span
+								class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full"></span>
+							<span class="relative">Abrir historia</span>
+							<span class="relative text-base transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110">✨</span>
+						</a>
+					</div>
+
+					<div class="hero-enter mt-14 flex flex-col items-center gap-3 text-[9px] uppercase tracking-[0.3em] text-zinc-600" style="animation-delay: 560ms">
+						<span>Desliza</span>
+						<span class="relative flex h-8 w-5 items-start justify-center rounded-full border border-zinc-700/80 pt-1.5">
+							<span class="scroll-dot block h-1.5 w-1.5 rounded-full bg-red-500"></span>
+						</span>
+					</div>
+				</div>
+			</section>
+
+			<!-- ============================================================
+         02. DETALLES / ESENCIAS
+         ============================================================ -->
+			<section id="detalles" class="relative py-20 sm:py-28">
+				<div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
+					<div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between" data-reveal>
+						<div class="max-w-2xl">
+							<p class="flex items-center gap-3 text-[10px] font-medium uppercase tracking-[0.3em] text-red-400/80 sm:text-[11px]">
+								<span class="h-px w-8 bg-red-500/50"></span>
+								01 · Detalles
+							</p>
+							<h2 class="mt-5 text-3xl font-semibold leading-tight tracking-[-0.035em] text-white sm:text-5xl">
+								Las pequeñas cosas
+								<span class="block font-display text-[1.15em] font-medium italic leading-[1.05] text-gradient-red">que me enamoran de ti</span>
+							</h2>
+							<p class="mt-5 max-w-lg text-sm font-light leading-7 text-zinc-500">No son grandes gestos. Son esos detalles tuyos que se me quedaron grabados sin pedir permiso.</p>
+						</div>
+
+						<!-- Controles del carrusel -->
+						<div class="flex items-center gap-2.5">
+							<button
+								id="detail-prev"
+								type="button"
+								class="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white transition hover:border-red-500/40 hover:bg-red-500/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400 disabled:cursor-not-allowed disabled:opacity-30"
+								aria-label="Ver detalles anteriores"
+								aria-controls="detail-track">
+								<i data-lucide="arrow-left" class="h-4 w-4"></i>
+							</button>
+							<button
+								id="detail-next"
+								type="button"
+								class="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white transition hover:border-red-500/40 hover:bg-red-500/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400 disabled:cursor-not-allowed disabled:opacity-30"
+								aria-label="Ver más detalles"
+								aria-controls="detail-track">
+								<i data-lucide="arrow-right" class="h-4 w-4"></i>
+							</button>
+						</div>
+					</div>
+
+					<div class="relative mt-10 sm:mt-12" data-reveal style="--reveal-delay: 100ms">
+						<div
+							id="detail-track"
+							class="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pb-5 pt-1 sm:gap-5"
+							role="region"
+							aria-roledescription="carrusel"
+							aria-label="Detalles que me enamoran de ti"
+							tabindex="0">
+							<!-- Las tarjetas se generan de forma estática para que el contenido siempre esté disponible -->
+							<article
+								class="detail-card group relative flex min-h-[324px] w-[81vw] max-w-[350px] shrink-0 snap-start flex-col overflow-hidden rounded-[26px] border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-white/[0.012] p-6 sm:min-h-[340px] sm:min-w-[330px] sm:p-7">
+								<div class="pointer-events-none absolute -right-14 -top-14 h-36 w-36 rounded-full bg-red-600/10 blur-3xl transition duration-500 group-hover:bg-red-600/20"></div>
+								<div class="relative flex items-center justify-between">
+									<span class="text-[9px] font-medium uppercase tracking-[0.32em] text-zinc-600">01 / 10</span>
+									<span class="grid h-11 w-11 place-items-center rounded-2xl border border-red-500/20 bg-red-500/[0.08] text-red-400">
+										<i data-lucide="smile" class="h-5 w-5"></i>
+									</span>
+								</div>
+								<h3 class="relative mt-8 text-lg font-medium tracking-tight text-white sm:text-xl">Tu sonrisa</h3>
+								<p class="relative mt-3 text-[13px] font-light leading-6 text-zinc-400 sm:text-sm">
+									Hay algo en tu sonrisa que me desarma por completo. Es mi parte favorita de cualquier foto y de cualquier recuerdo.
+								</p>
+								<div class="relative mt-auto flex items-center gap-2 pt-6 text-[10px] uppercase tracking-[0.2em] text-red-400/70">
+									<i data-lucide="heart" class="h-3 w-3 fill-current"></i>
+									Mi debilidad
+								</div>
+							</article>
+
+							<article
+								class="detail-card group relative flex min-h-[324px] w-[81vw] max-w-[350px] shrink-0 snap-start flex-col overflow-hidden rounded-[26px] border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-white/[0.012] p-6 sm:min-h-[340px] sm:min-w-[330px] sm:p-7">
+								<div class="pointer-events-none absolute -right-14 -top-14 h-36 w-36 rounded-full bg-red-600/10 blur-3xl transition duration-500 group-hover:bg-red-600/20"></div>
+								<div class="relative flex items-center justify-between">
+									<span class="text-[9px] font-medium uppercase tracking-[0.32em] text-zinc-600">02 / 10</span>
+									<span class="grid h-11 w-11 place-items-center rounded-2xl border border-red-500/20 bg-red-500/[0.08] text-red-400">
+										<i data-lucide="sparkles" class="h-5 w-5"></i>
+									</span>
+								</div>
+								<h3 class="relative mt-8 text-lg font-medium tracking-tight text-white sm:text-xl">Tus hoyuelos</h3>
+								<p class="relative mt-3 text-[13px] font-light leading-6 text-zinc-400 sm:text-sm">
+									Esos hoyuelos que aparecen cuando te ríes de verdad. Son pequeños, pero tienen toda la culpa de que me pierda mirándote.
+								</p>
+								<div class="relative mt-auto flex items-center gap-2 pt-6 text-[10px] uppercase tracking-[0.2em] text-red-400/70">
+									<i data-lucide="heart" class="h-3 w-3 fill-current"></i>
+									Sonrisa favorita
+								</div>
+							</article>
+
+							<article
+								class="detail-card group relative flex min-h-[324px] w-[81vw] max-w-[350px] shrink-0 snap-start flex-col overflow-hidden rounded-[26px] border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-white/[0.012] p-6 sm:min-h-[340px] sm:min-w-[330px] sm:p-7">
+								<div class="pointer-events-none absolute -right-14 -top-14 h-36 w-36 rounded-full bg-red-600/10 blur-3xl transition duration-500 group-hover:bg-red-600/20"></div>
+								<div class="relative flex items-center justify-between">
+									<span class="text-[9px] font-medium uppercase tracking-[0.32em] text-zinc-600">03 / 10</span>
+									<span class="grid h-11 w-11 place-items-center rounded-2xl border border-red-500/20 bg-red-500/[0.08] text-red-400">
+										<i data-lucide="eye" class="h-5 w-5"></i>
+									</span>
+								</div>
+								<h3 class="relative mt-8 text-lg font-medium tracking-tight text-white sm:text-xl">Tu expresividad</h3>
+								<p class="relative mt-3 text-[13px] font-light leading-6 text-zinc-400 sm:text-sm">
+									Se te nota todo en la cara: la alegría, el enojo, la ternura. Y me encanta que no escondas nada de lo que sientes.
+								</p>
+								<div class="relative mt-auto flex items-center gap-2 pt-6 text-[10px] uppercase tracking-[0.2em] text-red-400/70">
+									<i data-lucide="heart" class="h-3 w-3 fill-current"></i>
+									Tan tú
+								</div>
+							</article>
+
+							<article
+								class="detail-card group relative flex min-h-[324px] w-[81vw] max-w-[350px] shrink-0 snap-start flex-col overflow-hidden rounded-[26px] border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-white/[0.012] p-6 sm:min-h-[340px] sm:min-w-[330px] sm:p-7">
+								<div class="pointer-events-none absolute -right-14 -top-14 h-36 w-36 rounded-full bg-red-600/10 blur-3xl transition duration-500 group-hover:bg-red-600/20"></div>
+								<div class="relative flex items-center justify-between">
+									<span class="text-[9px] font-medium uppercase tracking-[0.32em] text-zinc-600">04 / 10</span>
+									<span class="grid h-11 w-11 place-items-center rounded-2xl border border-red-500/20 bg-red-500/[0.08] text-red-400">
+										<i data-lucide="hand-heart" class="h-5 w-5"></i>
+									</span>
+								</div>
+								<h3 class="relative mt-8 text-lg font-medium tracking-tight text-white sm:text-xl">Tus manos</h3>
+								<p class="relative mt-3 text-[13px] font-light leading-6 text-zinc-400 sm:text-sm">
+									Me gustan tus manos. No sé si por lo que dicen cuando hablas o por lo bien que imagino que encajarían con las mías.
+								</p>
+								<div class="relative mt-auto flex items-center gap-2 pt-6 text-[10px] uppercase tracking-[0.2em] text-red-400/70">
+									<i data-lucide="heart" class="h-3 w-3 fill-current"></i>
+									Para sostenerte
+								</div>
+							</article>
+
+							<article
+								class="detail-card group relative flex min-h-[324px] w-[81vw] max-w-[350px] shrink-0 snap-start flex-col overflow-hidden rounded-[26px] border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-white/[0.012] p-6 sm:min-h-[340px] sm:min-w-[330px] sm:p-7">
+								<div class="pointer-events-none absolute -right-14 -top-14 h-36 w-36 rounded-full bg-red-600/10 blur-3xl transition duration-500 group-hover:bg-red-600/20"></div>
+								<div class="relative flex items-center justify-between">
+									<span class="text-[9px] font-medium uppercase tracking-[0.32em] text-zinc-600">05 / 10</span>
+									<span class="grid h-11 w-11 place-items-center rounded-2xl border border-red-500/20 bg-red-500/[0.08] text-red-400">
+										<i data-lucide="coffee" class="h-5 w-5"></i>
+									</span>
+								</div>
+								<h3 class="relative mt-8 text-lg font-medium tracking-tight text-white sm:text-xl">El té</h3>
+								<p class="relative mt-3 text-[13px] font-light leading-6 text-zinc-400 sm:text-sm">
+									Tu amor por el té me parece adorable. Un té contigo, una conversación larga y el resto del mundo puede esperar.
+								</p>
+								<div class="relative mt-auto flex items-center gap-2 pt-6 text-[10px] uppercase tracking-[0.2em] text-red-400/70">
+									<i data-lucide="heart" class="h-3 w-3 fill-current"></i>
+									Plan perfecto
+								</div>
+							</article>
+
+							<article
+								class="detail-card group relative flex min-h-[324px] w-[81vw] max-w-[350px] shrink-0 snap-start flex-col overflow-hidden rounded-[26px] border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-white/[0.012] p-6 sm:min-h-[340px] sm:min-w-[330px] sm:p-7">
+								<div class="pointer-events-none absolute -right-14 -top-14 h-36 w-36 rounded-full bg-red-600/10 blur-3xl transition duration-500 group-hover:bg-red-600/20"></div>
+								<div class="relative flex items-center justify-between">
+									<span class="text-[9px] font-medium uppercase tracking-[0.32em] text-zinc-600">06 / 10</span>
+									<span class="grid h-11 w-11 place-items-center rounded-2xl border border-red-500/20 bg-red-500/[0.08] text-red-400">
+										<i data-lucide="cookie" class="h-5 w-5"></i>
+									</span>
+								</div>
+								<h3 class="relative mt-8 text-lg font-medium tracking-tight text-white sm:text-xl">La mantequilla de maní</h3>
+								<p class="relative mt-3 text-[13px] font-light leading-6 text-zinc-400 sm:text-sm">
+									La mantequilla de maní es tu debilidad, y ya forma parte de la lista de cosas que me recuerdan a ti. Simple, dulce, imposible de no querer.
+								</p>
+								<div class="relative mt-auto flex items-center gap-2 pt-6 text-[10px] uppercase tracking-[0.2em] text-red-400/70">
+									<i data-lucide="heart" class="h-3 w-3 fill-current"></i>
+									Tu antojo
+								</div>
+							</article>
+
+							<article
+								class="detail-card group relative flex min-h-[324px] w-[81vw] max-w-[350px] shrink-0 snap-start flex-col overflow-hidden rounded-[26px] border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-white/[0.012] p-6 sm:min-h-[340px] sm:min-w-[330px] sm:p-7">
+								<div class="pointer-events-none absolute -right-14 -top-14 h-36 w-36 rounded-full bg-red-600/10 blur-3xl transition duration-500 group-hover:bg-red-600/20"></div>
+								<div class="relative flex items-center justify-between">
+									<span class="text-[9px] font-medium uppercase tracking-[0.32em] text-zinc-600">07 / 10</span>
+									<span class="grid h-11 w-11 place-items-center rounded-2xl border border-red-500/20 bg-red-500/[0.08] text-red-400">
+										<i data-lucide="leaf" class="h-5 w-5"></i>
+									</span>
+								</div>
+								<h3 class="relative mt-8 text-lg font-medium tracking-tight text-white sm:text-xl">El aguacate de peluche</h3>
+								<p class="relative mt-3 text-[13px] font-light leading-6 text-zinc-400 sm:text-sm">
+									Ese peluche de aguacate tiene suerte: recibe tus abrazos antes que yo. Pero está bien, sé esperar mi turno.
+								</p>
+								<div class="relative mt-auto flex items-center gap-2 pt-6 text-[10px] uppercase tracking-[0.2em] text-red-400/70">
+									<i data-lucide="heart" class="h-3 w-3 fill-current"></i>
+									Celos sanos
+								</div>
+							</article>
+
+							<article
+								class="detail-card group relative flex min-h-[324px] w-[81vw] max-w-[350px] shrink-0 snap-start flex-col overflow-hidden rounded-[26px] border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-white/[0.012] p-6 sm:min-h-[340px] sm:min-w-[330px] sm:p-7">
+								<div class="pointer-events-none absolute -right-14 -top-14 h-36 w-36 rounded-full bg-red-600/10 blur-3xl transition duration-500 group-hover:bg-red-600/20"></div>
+								<div class="relative flex items-center justify-between">
+									<span class="text-[9px] font-medium uppercase tracking-[0.32em] text-zinc-600">08 / 10</span>
+									<span class="grid h-11 w-11 place-items-center rounded-2xl border border-red-500/20 bg-red-500/[0.08] text-red-400">
+										<i data-lucide="sunrise" class="h-5 w-5"></i>
+									</span>
+								</div>
+								<h3 class="relative mt-8 text-lg font-medium tracking-tight text-white sm:text-xl">Nuestros desayunos</h3>
+								<p class="relative mt-3 text-[13px] font-light leading-6 text-zinc-400 sm:text-sm">
+									Desayunar juntos es uno de esos planes que no suenan grandes hasta que pienso en ti. Y entonces se vuelven mi plan favorito.
+								</p>
+								<div class="relative mt-auto flex items-center gap-2 pt-6 text-[10px] uppercase tracking-[0.2em] text-red-400/70">
+									<i data-lucide="heart" class="h-3 w-3 fill-current"></i>
+									Buenos días
+								</div>
+							</article>
+
+							<article
+								class="detail-card group relative flex min-h-[324px] w-[81vw] max-w-[350px] shrink-0 snap-start flex-col overflow-hidden rounded-[26px] border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-white/[0.012] p-6 sm:min-h-[340px] sm:min-w-[330px] sm:p-7">
+								<div class="pointer-events-none absolute -right-14 -top-14 h-36 w-36 rounded-full bg-red-600/10 blur-3xl transition duration-500 group-hover:bg-red-600/20"></div>
+								<div class="relative flex items-center justify-between">
+									<span class="text-[9px] font-medium uppercase tracking-[0.32em] text-zinc-600">09 / 10</span>
+									<span class="grid h-11 w-11 place-items-center rounded-2xl border border-red-500/20 bg-red-500/[0.08] text-red-400">
+										<i data-lucide="film" class="h-5 w-5"></i>
+									</span>
+								</div>
+								<h3 class="relative mt-8 text-lg font-medium tracking-tight text-white sm:text-xl">Spirit</h3>
+								<p class="relative mt-3 text-[13px] font-light leading-6 text-zinc-400 sm:text-sm">
+									“Spirit: El corcel indomable”. Tu película favorita y una historia sobre libertad, fuerza y corazón. Como tú.
+								</p>
+								<div class="relative mt-auto flex items-center gap-2 pt-6 text-[10px] uppercase tracking-[0.2em] text-red-400/70">
+									<i data-lucide="heart" class="h-3 w-3 fill-current"></i>
+									Noche de película
+								</div>
+							</article>
+
+							<article
+								class="detail-card group relative flex min-h-[324px] w-[81vw] max-w-[350px] shrink-0 snap-start flex-col overflow-hidden rounded-[26px] border border-red-500/20 bg-gradient-to-b from-red-500/[0.10] to-red-950/[0.12] p-6 sm:min-h-[340px] sm:min-w-[330px] sm:p-7">
+								<div class="pointer-events-none absolute -right-14 -top-14 h-36 w-36 rounded-full bg-red-600/20 blur-3xl"></div>
+								<div class="relative flex items-center justify-between">
+									<span class="text-[9px] font-medium uppercase tracking-[0.32em] text-red-300/50">10 / 10</span>
+									<span class="grid h-11 w-11 place-items-center rounded-2xl border border-red-500/30 bg-red-500/10 text-red-300">
+										<i data-lucide="infinity" class="h-5 w-5"></i>
+									</span>
+								</div>
+								<h3 class="relative mt-8 text-lg font-medium tracking-tight text-white sm:text-xl">Todo lo demás</h3>
+								<p class="relative mt-3 text-[13px] font-light leading-6 text-red-100/70 sm:text-sm">
+									Y podría seguir... por tu forma de reír, de cuidar, de mirar. Pero lo mejor de esta lista es todo lo que todavía me falta por descubrir de ti.
+								</p>
+								<div class="relative mt-auto flex items-center gap-2 pt-6 text-[10px] uppercase tracking-[0.2em] text-red-300/70">
+									<i data-lucide="heart" class="h-3 w-3 fill-current"></i>
+									Mi favorita: tú
+								</div>
+							</article>
+						</div>
+
+						<div class="mt-1 flex items-center gap-4" data-reveal style="--reveal-delay: 180ms">
+							<div class="h-[3px] flex-1 overflow-hidden rounded-full bg-white/[0.06]">
+								<div id="detail-progress" class="h-full w-[12%] rounded-full bg-gradient-to-r from-crimson-700 to-crimson-400 transition-[width] duration-300"></div>
+							</div>
+							<span class="text-[9px] uppercase tracking-[0.25em] text-zinc-600">Desliza</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ============================================================
+         03. GALERÍA DE RECUERDOS
+         ============================================================ -->
+			<section id="recuerdos" class="relative py-20 sm:py-28">
+				<div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
+					<div class="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between" data-reveal>
+						<div class="max-w-2xl">
+							<p class="flex items-center gap-3 text-[10px] font-medium uppercase tracking-[0.3em] text-red-400/80 sm:text-[11px]">
+								<span class="h-px w-8 bg-red-500/50"></span>
+								02 · Recuerdos
+							</p>
+							<h2 class="mt-5 text-3xl font-semibold leading-tight tracking-[-0.035em] text-white sm:text-5xl">
+								Pedacitos de
+								<span class="font-display text-[1.15em] font-medium italic text-gradient-red">nosotros</span>
+							</h2>
+							<p class="mt-5 max-w-lg text-sm font-light leading-7 text-zinc-500">Fotos que no necesitan filtro porque ya tienen algo mejor: nosotros.</p>
+						</div>
+
+						<div class="flex items-end gap-3">
+							<span class="font-display text-5xl leading-none text-white/15 sm:text-6xl">07</span>
+							<span class="mb-1 text-[9px] uppercase leading-4 tracking-[0.2em] text-zinc-600 sm:text-[10px]">recuerdos<br />y contando</span>
+						</div>
+					</div>
+
+					<!-- Grid adaptable: 2 columnas en móvil, 4 en escritorio -->
+					<div class="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-5 lg:grid-cols-4">
+						<!-- 01 · ambos1.jpeg -->
+						<button
+							type="button"
+							class="memory-card group relative overflow-hidden rounded-[22px] border border-white/[0.08] bg-white/[0.025] p-2 text-left transition duration-300 hover:border-red-500/25 hover:bg-white/[0.045] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-400"
+							data-memory
+							data-src="images/ambos1.jpeg"
+							data-title="Rojo de verte"
+							data-caption="Tú de rojo, yo sin poder dejar de mirarte. Mi foto favorita sin competencia."
+							data-alt="Mareanny con un vestido rojo junto a Ernesto"
+							aria-label="Ampliar foto: Rojo de verte"
+							data-reveal>
+							<div class="relative aspect-[3/4] overflow-hidden rounded-[16px] bg-zinc-900">
+								<img
+									src="images/ambos1.jpeg"
+									alt="Mareanny con un vestido rojo junto a Ernesto"
+									width="809"
+									height="1080"
+									loading="lazy"
+									decoding="async"
+									class="h-full w-full object-cover" />
+								<div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
+								<span
+									class="absolute left-2.5 top-2.5 rounded-full border border-white/10 bg-black/45 px-2 py-1 text-[8px] font-medium uppercase tracking-[0.22em] text-white/70 backdrop-blur-md"
+									>01</span
+								>
+								<span
+									class="absolute bottom-2.5 right-2.5 grid h-8 w-8 translate-y-2 place-items-center rounded-full border border-white/15 bg-black/45 text-white opacity-0 backdrop-blur-md transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+									<i data-lucide="maximize-2" class="h-3.5 w-3.5"></i>
+								</span>
+							</div>
+							<div class="px-1.5 pb-1.5 pt-3">
+								<p class="font-display text-lg italic leading-none text-red-100/90">Rojo de verte</p>
+								<p class="mt-2 text-[11px] font-light leading-relaxed text-zinc-400">Tú de rojo, yo sin poder dejar de mirarte. Mi foto favorita sin competencia.</p>
+							</div>
+						</button>
+
+						<!-- 02 · ambos2.jpeg -->
+						<button
+							type="button"
+							class="memory-card group relative overflow-hidden rounded-[22px] border border-white/[0.08] bg-white/[0.025] p-2 text-left transition duration-300 hover:border-red-500/25 hover:bg-white/[0.045] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-400"
+							data-memory
+							data-src="images/ambos2.jpeg"
+							data-title="Dos sonrisas, un mismo rojo"
+							data-caption="Cuando estamos juntos, hasta el rojo parece ponerse de nuestro lado."
+							data-alt="Mareanny y Ernesto sonriendo, ambos vestidos de rojo"
+							aria-label="Ampliar foto: Dos sonrisas, un mismo rojo"
+							data-reveal
+							style="--reveal-delay: 60ms">
+							<div class="relative aspect-[3/4] overflow-hidden rounded-[16px] bg-zinc-900">
+								<img
+									src="images/ambos2.jpeg"
+									alt="Mareanny y Ernesto sonriendo, ambos vestidos de rojo"
+									width="809"
+									height="1080"
+									loading="lazy"
+									decoding="async"
+									class="h-full w-full object-cover" />
+								<div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
+								<span
+									class="absolute left-2.5 top-2.5 rounded-full border border-white/10 bg-black/45 px-2 py-1 text-[8px] font-medium uppercase tracking-[0.22em] text-white/70 backdrop-blur-md"
+									>02</span
+								>
+								<span
+									class="absolute bottom-2.5 right-2.5 grid h-8 w-8 translate-y-2 place-items-center rounded-full border border-white/15 bg-black/45 text-white opacity-0 backdrop-blur-md transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+									<i data-lucide="maximize-2" class="h-3.5 w-3.5"></i>
+								</span>
+							</div>
+							<div class="px-1.5 pb-1.5 pt-3">
+								<p class="font-display text-lg italic leading-none text-red-100/90">Dos sonrisas</p>
+								<p class="mt-2 text-[11px] font-light leading-relaxed text-zinc-400">Un mismo rojo y la sensación de que todo encaja cuando estamos juntos.</p>
+							</div>
+						</button>
+
+						<!-- 03 · solaspidi.jpeg -->
+						<button
+							type="button"
+							class="memory-card group relative overflow-hidden rounded-[22px] border border-white/[0.08] bg-white/[0.025] p-2 text-left transition duration-300 hover:border-red-500/25 hover:bg-white/[0.045] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-400"
+							data-memory
+							data-src="images/solaspidi.jpeg"
+							data-title="Mi Spider-Girl"
+							data-caption="Con tu body de Spider-Man y tu telaraña en el rostro. Valiente, hermosa y dueña de toda mi atención."
+							data-alt="Mareanny con body de Spider-Man y maquillaje de telaraña"
+							aria-label="Ampliar foto: Mi Spider-Girl"
+							data-reveal
+							style="--reveal-delay: 120ms">
+							<div class="relative aspect-[3/4] overflow-hidden rounded-[16px] bg-zinc-900">
+								<img
+									src="images/solaspidi.jpeg"
+									alt="Mareanny con body de Spider-Man y maquillaje de telaraña"
+									width="720"
+									height="1280"
+									loading="lazy"
+									decoding="async"
+									class="h-full w-full object-cover" />
+								<div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
+								<span
+									class="absolute left-2.5 top-2.5 rounded-full border border-white/10 bg-black/45 px-2 py-1 text-[8px] font-medium uppercase tracking-[0.22em] text-white/70 backdrop-blur-md"
+									>03</span
+								>
+								<span
+									class="absolute bottom-2.5 right-2.5 grid h-8 w-8 translate-y-2 place-items-center rounded-full border border-white/15 bg-black/45 text-white opacity-0 backdrop-blur-md transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+									<i data-lucide="maximize-2" class="h-3.5 w-3.5"></i>
+								</span>
+							</div>
+							<div class="px-1.5 pb-1.5 pt-3">
+								<p class="font-display text-lg italic leading-none text-red-100/90">Mi Spider-Girl</p>
+								<p class="mt-2 text-[11px] font-light leading-relaxed text-zinc-400">Tu telaraña en el rostro y una red que, sin darte cuenta, atrapó mi corazón.</p>
+							</div>
+						</button>
+
+						<!-- 04 · mirada1.jpeg -->
+						<button
+							type="button"
+							class="memory-card group relative overflow-hidden rounded-[22px] border border-white/[0.08] bg-white/[0.025] p-2 text-left transition duration-300 hover:border-red-500/25 hover:bg-white/[0.045] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-400"
+							data-memory
+							data-src="images/mirada1.jpeg"
+							data-title="Esa mirada"
+							data-caption="Una mirada tuya y el mundo entero se queda en silencio."
+							data-alt="Mirada especial de Mareanny"
+							aria-label="Ampliar foto: Esa mirada"
+							data-reveal
+							style="--reveal-delay: 180ms">
+							<div class="relative aspect-[3/4] overflow-hidden rounded-[16px] bg-zinc-900">
+								<img src="images/mirada1.jpeg" alt="Mirada especial de Mareanny" width="1170" height="2080" loading="lazy" decoding="async" class="h-full w-full object-cover" />
+								<div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
+								<span
+									class="absolute left-2.5 top-2.5 rounded-full border border-white/10 bg-black/45 px-2 py-1 text-[8px] font-medium uppercase tracking-[0.22em] text-white/70 backdrop-blur-md"
+									>04</span
+								>
+								<span
+									class="absolute bottom-2.5 right-2.5 grid h-8 w-8 translate-y-2 place-items-center rounded-full border border-white/15 bg-black/45 text-white opacity-0 backdrop-blur-md transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+									<i data-lucide="maximize-2" class="h-3.5 w-3.5"></i>
+								</span>
+							</div>
+							<div class="px-1.5 pb-1.5 pt-3">
+								<p class="font-display text-lg italic leading-none text-red-100/90">Esa mirada</p>
+								<p class="mt-2 text-[11px] font-light leading-relaxed text-zinc-400">Una mirada tuya y el mundo entero se queda en silencio.</p>
+							</div>
+						</button>
+
+						<!-- 05 · mirada2.jpeg -->
+						<button
+							type="button"
+							class="memory-card group relative overflow-hidden rounded-[22px] border border-white/[0.08] bg-white/[0.025] p-2 text-left transition duration-300 hover:border-red-500/25 hover:bg-white/[0.045] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-400"
+							data-memory
+							data-src="images/mirada2.jpeg"
+							data-title="Solo nosotros"
+							data-caption="De esas miradas que dicen lo que las palabras todavía no se atreven."
+							data-alt="Mirada cómplice y privada entre Mareanny y Ernesto"
+							aria-label="Ampliar foto: Solo nosotros"
+							data-reveal
+							style="--reveal-delay: 240ms">
+							<div class="relative aspect-[3/4] overflow-hidden rounded-[16px] bg-zinc-900">
+								<img
+									src="images/mirada2.jpeg"
+									alt="Mirada cómplice y privada entre Mareanny y Ernesto"
+									width="1170"
+									height="2080"
+									loading="lazy"
+									decoding="async"
+									class="h-full w-full object-cover" />
+								<div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
+								<span
+									class="absolute left-2.5 top-2.5 rounded-full border border-white/10 bg-black/45 px-2 py-1 text-[8px] font-medium uppercase tracking-[0.22em] text-white/70 backdrop-blur-md"
+									>05</span
+								>
+								<span
+									class="absolute bottom-2.5 right-2.5 grid h-8 w-8 translate-y-2 place-items-center rounded-full border border-white/15 bg-black/45 text-white opacity-0 backdrop-blur-md transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+									<i data-lucide="maximize-2" class="h-3.5 w-3.5"></i>
+								</span>
+							</div>
+							<div class="px-1.5 pb-1.5 pt-3">
+								<p class="font-display text-lg italic leading-none text-red-100/90">Solo nosotros</p>
+								<p class="mt-2 text-[11px] font-light leading-relaxed text-zinc-400">De esas miradas que dicen lo que las palabras todavía no se atreven.</p>
+							</div>
+						</button>
+
+						<!-- 06 · ambos3.jpeg -->
+						<button
+							type="button"
+							class="memory-card group relative overflow-hidden rounded-[22px] border border-white/[0.08] bg-white/[0.025] p-2 text-left transition duration-300 hover:border-red-500/25 hover:bg-white/[0.045] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-400"
+							data-memory
+							data-src="images/ambos3.jpeg"
+							data-title="Mi lugar seguro"
+							data-caption="Cada foto contigo es un recuerdo que quiero volver a repetir."
+							data-alt="Mareanny y Ernesto juntos en otro recuerdo"
+							aria-label="Ampliar foto: Mi lugar seguro"
+							data-reveal
+							style="--reveal-delay: 300ms">
+							<div class="relative aspect-[3/4] overflow-hidden rounded-[16px] bg-zinc-900">
+								<img
+									src="images/ambos3.jpeg"
+									alt="Mareanny y Ernesto juntos en otro recuerdo"
+									width="774"
+									height="1032"
+									loading="lazy"
+									decoding="async"
+									class="h-full w-full object-cover" />
+								<div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
+								<span
+									class="absolute left-2.5 top-2.5 rounded-full border border-white/10 bg-black/45 px-2 py-1 text-[8px] font-medium uppercase tracking-[0.22em] text-white/70 backdrop-blur-md"
+									>06</span
+								>
+								<span
+									class="absolute bottom-2.5 right-2.5 grid h-8 w-8 translate-y-2 place-items-center rounded-full border border-white/15 bg-black/45 text-white opacity-0 backdrop-blur-md transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+									<i data-lucide="maximize-2" class="h-3.5 w-3.5"></i>
+								</span>
+							</div>
+							<div class="px-1.5 pb-1.5 pt-3">
+								<p class="font-display text-lg italic leading-none text-red-100/90">Mi lugar seguro</p>
+								<p class="mt-2 text-[11px] font-light leading-relaxed text-zinc-400">Cada foto contigo es un recuerdo que quiero volver a repetir.</p>
+							</div>
+						</button>
+
+						<!-- 07 · mirada3.jpeg -->
+						<button
+							type="button"
+							class="memory-card group relative overflow-hidden rounded-[22px] border border-white/[0.08] bg-white/[0.025] p-2 text-left transition duration-300 hover:border-red-500/25 hover:bg-white/[0.045] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-400"
+							data-memory
+							data-src="images/mirada3.jpeg"
+							data-title="Tus ojos"
+							data-caption="Mi lugar favorito para perderme, incluso sin darme cuenta."
+							data-alt="Otra mirada especial de Mareanny"
+							aria-label="Ampliar foto: Tus ojos"
+							data-reveal
+							style="--reveal-delay: 360ms">
+							<div class="relative aspect-[3/4] overflow-hidden rounded-[16px] bg-zinc-900">
+								<img src="images/mirada3.jpeg" alt="Otra mirada especial de Mareanny" width="774" height="1032" loading="lazy" decoding="async" class="h-full w-full object-cover" />
+								<div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
+								<span
+									class="absolute left-2.5 top-2.5 rounded-full border border-white/10 bg-black/45 px-2 py-1 text-[8px] font-medium uppercase tracking-[0.22em] text-white/70 backdrop-blur-md"
+									>07</span
+								>
+								<span
+									class="absolute bottom-2.5 right-2.5 grid h-8 w-8 translate-y-2 place-items-center rounded-full border border-white/15 bg-black/45 text-white opacity-0 backdrop-blur-md transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+									<i data-lucide="maximize-2" class="h-3.5 w-3.5"></i>
+								</span>
+							</div>
+							<div class="px-1.5 pb-1.5 pt-3">
+								<p class="font-display text-lg italic leading-none text-red-100/90">Tus ojos</p>
+								<p class="mt-2 text-[11px] font-light leading-relaxed text-zinc-400">Mi lugar favorito para perderme, incluso sin darme cuenta.</p>
+							</div>
+						</button>
+
+						<!-- Tarjeta próxima: la playa -->
+						<a
+							href="#respuesta"
+							class="memory-card group relative overflow-hidden rounded-[22px] border border-dashed border-red-500/25 bg-red-950/[0.12] p-2 text-left transition duration-300 hover:border-red-500/50 hover:bg-red-950/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-400"
+							data-reveal
+							style="--reveal-delay: 420ms"
+							aria-label="Ir a la pregunta final y al próximo recuerdo">
+							<div
+								class="relative flex aspect-[3/4] flex-col justify-between overflow-hidden rounded-[16px] bg-[radial-gradient(circle_at_30%_20%,rgba(220,38,38,0.16),transparent_55%)] p-4 sm:p-5">
+								<div class="flex items-center justify-between">
+									<span class="grid h-9 w-9 place-items-center rounded-full border border-red-500/25 bg-red-500/10 text-red-300">
+										<i data-lucide="waves" class="h-4 w-4"></i>
+									</span>
+									<i
+										data-lucide="arrow-up-right"
+										class="h-4 w-4 text-red-300/60 transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-red-300"></i>
+								</div>
+								<div>
+									<p class="text-[8px] font-medium uppercase tracking-[0.28em] text-red-300/50">Pendiente</p>
+									<p class="mt-2 font-display text-2xl italic leading-none text-red-50/90 sm:text-3xl">La playa</p>
+									<p class="mt-2 text-[10px] font-light leading-relaxed text-red-100/45 sm:text-[11px]">Nuestro próximo recuerdo, ojalá muy pronto.</p>
+								</div>
+							</div>
+							<div class="px-1.5 pb-1.5 pt-3">
+								<p class="font-display text-lg italic leading-none text-red-100/90">Nos falta esa foto</p>
+								<p class="mt-2 text-[11px] font-light leading-relaxed text-zinc-400">El mar de fondo, tu risa cerca y ningún reloj diciéndonos que volvamos.</p>
+							</div>
+						</a>
+					</div>
+
+					<p class="mt-6 flex items-center justify-center gap-2 text-center text-[10px] uppercase tracking-[0.18em] text-zinc-600" data-reveal>
+						<i data-lucide="scan" class="h-3.5 w-3.5 text-red-500/60"></i>
+						Toca una foto para verla completa
+					</p>
+				</div>
+			</section>
+
+			<!-- ============================================================
+         04. LA CONFESIÓN
+         ============================================================ -->
+			<section id="confesion" class="relative overflow-hidden py-20 sm:py-28">
+				<div class="pointer-events-none absolute left-1/2 top-24 -z-10 h-[30rem] w-[30rem] max-w-[120vw] -translate-x-1/2 rounded-full bg-red-600/[0.08] blur-[110px]" aria-hidden="true"></div>
+
+				<div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
+					<div class="mx-auto max-w-2xl text-center" data-reveal>
+						<p class="flex items-center justify-center gap-3 text-[10px] font-medium uppercase tracking-[0.3em] text-red-400/80 sm:text-[11px]">
+							<span class="h-px w-8 bg-red-500/50"></span>
+							03 · La confesión
+							<span class="h-px w-8 bg-red-500/50"></span>
+						</p>
+						<h2 class="mt-5 text-3xl font-semibold leading-tight tracking-[-0.035em] text-white sm:text-5xl">
+							Lo que no quería
+							<span class="block font-display text-[1.15em] font-medium italic text-gradient-red">dejar sin decir</span>
+						</h2>
+					</div>
+
+					<div class="mt-12 grid gap-5 lg:grid-cols-12 lg:gap-6">
+						<!-- Carta principal -->
+						<article class="glass-red relative overflow-hidden rounded-[30px] p-6 shadow-soft-red sm:p-10 lg:col-span-7 lg:p-12" data-reveal>
+							<span class="pointer-events-none absolute -right-2 -top-10 font-display text-[11rem] leading-none text-red-500/10 sm:text-[15rem]" aria-hidden="true">“</span>
+
+							<div class="relative">
+								<div class="flex items-center gap-3">
+									<span
+										class="inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.24em] text-red-200/80">
+										<i data-lucide="mail" class="h-3 w-3"></i>
+										Para ti
+									</span>
+									<span class="h-px flex-1 bg-gradient-to-r from-red-500/30 to-transparent"></span>
+								</div>
+
+								<blockquote class="mt-8 sm:mt-10">
+									<p class="font-display text-[clamp(1.7rem,5.2vw,2.8rem)] font-medium italic leading-[1.22] tracking-[-0.02em] text-white">
+										Si hay que sufrir y sé que pasará porque tienes tu pareja, que sepas que será un placer sufrir por esa sonrisa tuya que me encanta...
+									</p>
+								</blockquote>
+
+								<div class="mt-8 h-px w-16 bg-gradient-to-r from-red-500/70 to-transparent"></div>
+
+								<p class="mt-6 text-sm font-light leading-7 text-zinc-300/75">
+									No quiero que esto suene a presión ni a promesa imposible. Solo quería que supieras que hay alguien que piensa en ti con cariño, que se alegra cuando te ve feliz y
+									que no puede evitar sonreír cuando apareces.
+								</p>
+
+								<div class="mt-8 flex items-center justify-between gap-4">
+									<div>
+										<p class="text-[9px] uppercase tracking-[0.22em] text-zinc-500">Con todo mi corazón,</p>
+										<p class="mt-1 font-display text-2xl italic text-red-100">Ernesto</p>
+									</div>
+									<span class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-red-500/25 bg-red-500/10 text-red-400">
+										<i data-lucide="heart" class="h-4 w-4 fill-current"></i>
+									</span>
+								</div>
+							</div>
+						</article>
+
+						<!-- Historia / momentos -->
+						<div class="space-y-4 lg:col-span-5">
+							<article class="glass group rounded-[24px] p-5 transition duration-300 hover:border-red-500/25 sm:p-6" data-reveal style="--reveal-delay: 100ms">
+								<div class="flex gap-4">
+									<span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-red-500/20 bg-red-500/[0.08] text-red-400">
+										<i data-lucide="instagram" class="h-5 w-5"></i>
+									</span>
+									<div>
+										<p class="text-[9px] uppercase tracking-[0.25em] text-red-400/60">Donde empezó todo</p>
+										<h3 class="mt-2 text-base font-medium text-white">Instagram</h3>
+										<p class="mt-2 text-[13px] font-light leading-6 text-zinc-400">
+											Todo comenzó con un mensaje. De esos que parecen pequeños y terminan convirtiéndose en la parte favorita del día.
+										</p>
+									</div>
+								</div>
+							</article>
+
+							<article class="glass group rounded-[24px] p-5 transition duration-300 hover:border-red-500/25 sm:p-6" data-reveal style="--reveal-delay: 200ms">
+								<div class="flex gap-4">
+									<span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-red-500/20 bg-red-500/[0.08] text-red-400">
+										<i data-lucide="map-pin" class="h-5 w-5"></i>
+									</span>
+									<div>
+										<p class="text-[9px] uppercase tracking-[0.25em] text-red-400/60">Nuestra primera vez</p>
+										<h3 class="mt-2 text-base font-medium text-white">Surty Donuts</h3>
+										<p class="mt-2 text-[13px] font-light leading-6 text-zinc-400">
+											El primer lugar donde te vi frente a mí y entendí que quería más tiempo contigo. Desde entonces, cualquier lugar se siente mejor si estás tú.
+										</p>
+									</div>
+								</div>
+							</article>
+
+							<article class="glass group rounded-[24px] p-5 transition duration-300 hover:border-red-500/25 sm:p-6" data-reveal style="--reveal-delay: 300ms">
+								<div class="flex gap-4">
+									<span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-red-500/20 bg-red-500/[0.08] text-red-400">
+										<i data-lucide="waves" class="h-5 w-5"></i>
+									</span>
+									<div>
+										<p class="text-[9px] uppercase tracking-[0.25em] text-red-400/60">Lo que nos queda pendiente</p>
+										<h3 class="mt-2 text-base font-medium text-white">La playa</h3>
+										<p class="mt-2 text-[13px] font-light leading-6 text-zinc-400">
+											Quiero verte con el mar de fondo, escucharte reír con las olas y guardar ese día como uno de esos recuerdos que no se borran.
+										</p>
+									</div>
+								</div>
+							</article>
+
+							<div class="flex items-center justify-center gap-2 pt-2 text-[9px] uppercase tracking-[0.3em] text-zinc-600" data-reveal style="--reveal-delay: 400ms">
+								<span class="h-px w-8 bg-zinc-800"></span>
+								Nuestra historia continúa
+								<span class="h-px w-8 bg-zinc-800"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ============================================================
+         05. CIERRE / PREGUNTA FINAL
+         ============================================================ -->
+			<section id="respuesta" class="relative py-20 sm:py-28">
+				<div class="mx-auto max-w-5xl px-5 sm:px-8">
+					<div class="glass-red relative overflow-hidden rounded-[32px] px-5 py-12 text-center shadow-glow-red sm:px-12 sm:py-16" data-reveal>
+						<!-- Decoración -->
+						<div class="pointer-events-none absolute inset-0 overflow-hidden rounded-[32px]" aria-hidden="true">
+							<div class="absolute -left-24 -top-24 h-64 w-64 rounded-full bg-red-600/20 blur-[80px]"></div>
+							<div class="absolute -bottom-32 -right-20 h-72 w-72 rounded-full bg-red-600/15 blur-[90px]"></div>
+							<div class="absolute left-[8%] top-[20%] drift text-lg opacity-40">🖤</div>
+							<div class="absolute right-[10%] top-[16%] drift text-sm opacity-40" style="animation-delay: -3s">❤️</div>
+							<div class="absolute bottom-[18%] left-[12%] text-[10px] opacity-30" aria-hidden="true">✦</div>
+							<div class="absolute bottom-[24%] right-[16%] text-[9px] opacity-30" aria-hidden="true">✦</div>
+							<div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-red-500/60 to-transparent"></div>
+						</div>
+
+						<div class="relative">
+							<span
+								class="inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2 text-[9px] font-medium uppercase tracking-[0.25em] text-red-200/80 sm:text-[10px]">
+								<i data-lucide="sparkles" class="h-3.5 w-3.5"></i>
+								La última pregunta
+							</span>
+
+							<h2 class="mx-auto mt-6 max-w-3xl text-[clamp(1.8rem,6vw,3.4rem)] font-semibold leading-[1.15] tracking-[-0.035em] text-white">
+								¿Aceptas salir conmigo en una cita
+								<span class="block font-display text-[1.15em] font-medium italic text-gradient">antes de que diciembre nos cambie el rumbo?</span>
+							</h2>
+
+							<p class="mx-auto mt-5 max-w-lg text-sm font-light leading-7 text-zinc-400">
+								Sin presión, sin guiones y sin promesas que no pueda cumplir. Solo tú, yo y las ganas de darnos esa oportunidad.
+							</p>
+
+							<div class="mx-auto mt-9 w-full max-w-md">
+								<!-- Botón principal: WhatsApp -->
+								<a
+									id="yes-btn"
+									href="https://wa.me/584164204146?text=Hola%20Ernesto%2C%20he%20visto%20la%20p%C3%A1gina%20y%20%C2%A1S%C3%8D%20acepto%20salir%20contigo!%20%E2%9C%A8"
+									target="_blank"
+									rel="noopener noreferrer"
+									class="group relative flex w-full items-center justify-center gap-2.5 overflow-hidden rounded-full bg-crimson-600 px-6 py-4 text-sm font-medium text-white shadow-glow-red transition duration-300 hover:-translate-y-0.5 hover:bg-crimson-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-400 sm:text-[15px]">
+									<span
+										class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full"></span>
+									<i data-lucide="message-circle-heart" class="relative h-4 w-4"></i>
+									<span class="relative">Sí, acepto con todo 💜</span>
+								</a>
+
+								<!-- Zona de escape del botón "No" -->
+								<div id="no-zone" class="relative mt-3 h-28 w-full sm:h-24">
+									<button
+										id="no-btn"
+										type="button"
+										class="absolute left-1/2 top-1/2 inline-flex -translate-x-1/2 -translate-y-1/2 select-none items-center justify-center gap-2 whitespace-nowrap rounded-full border border-white/10 bg-white/[0.04] px-6 py-3 text-xs font-light text-zinc-400 transition hover:border-white/20 hover:bg-white/[0.07] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-400"
+										aria-describedby="no-help">
+										Piénsalo bien 👀
+									</button>
+								</div>
+
+								<p id="no-help" class="mt-1 text-[10px] font-light leading-5 text-zinc-600">PD: El botón de “No” es un poco cobarde. No es culpa mía. 😌</p>
+							</div>
+
+							<div class="mt-8 flex items-center justify-center gap-2 text-[9px] uppercase tracking-[0.24em] text-zinc-600">
+								<span class="h-px w-6 bg-zinc-800"></span>
+								<i data-lucide="heart" class="h-3 w-3 text-red-500/60"></i>
+								<span class="h-px w-6 bg-zinc-800"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- ============================================================
+       FOOTER
+       ============================================================ -->
+		<footer class="border-t border-white/[0.05] py-8 pb-[max(2rem,env(safe-area-inset-bottom))]">
+			<div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 text-center sm:flex-row sm:px-8 sm:text-left lg:px-10">
+				<p class="text-[10px] font-light leading-5 text-zinc-600">Hecho con cariño, un poco de nervios y todo mi corazón.</p>
+				<p class="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.22em] text-zinc-500">
+					Para Mareanny
+					<span class="text-red-500">♥</span>
+				</p>
+			</div>
+		</footer>
+
+		<!-- ============================================================
+       LIGHTBOX DE LA GALERÍA
+       ============================================================ -->
+		<div id="lightbox" class="fixed inset-0 z-[100] flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-hidden="true">
+			<div class="absolute inset-0 bg-black/95 backdrop-blur-2xl" data-lightbox-close></div>
+
+			<div class="relative z-10 flex h-full w-full flex-col">
+				<!-- Barra superior -->
+				<div class="flex items-center justify-between px-5 pt-[max(1rem,env(safe-area-inset-top))] sm:px-8">
+					<span id="lightbox-count" class="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[9px] uppercase tracking-[0.22em] text-zinc-400">01 / 07</span>
+					<button
+						id="lightbox-close"
+						type="button"
+						class="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.06] text-white transition hover:border-red-500/40 hover:bg-red-500/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400"
+						aria-label="Cerrar visor de fotos">
+						<i data-lucide="x" class="h-5 w-5"></i>
+					</button>
+				</div>
+
+				<!-- Imagen -->
+				<div class="relative flex min-h-0 flex-1 items-center justify-center px-4 py-4 sm:px-16">
+					<button
+						id="lightbox-prev"
+						type="button"
+						class="absolute left-2 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-black/50 text-white backdrop-blur-md transition hover:border-red-500/40 hover:bg-red-500/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400 sm:left-5 sm:h-12 sm:w-12"
+						aria-label="Foto anterior">
+						<i data-lucide="chevron-left" class="h-5 w-5"></i>
+					</button>
+
+					<figure class="flex h-full max-h-full w-full flex-col items-center justify-center">
+						<img id="lightbox-img" src="" alt="" class="lb-img max-h-[min(70svh,760px)] w-auto max-w-full rounded-2xl object-contain shadow-2xl" />
+					</figure>
+
+					<button
+						id="lightbox-next"
+						type="button"
+						class="absolute right-2 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-black/50 text-white backdrop-blur-md transition hover:border-red-500/40 hover:bg-red-500/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400 sm:right-5 sm:h-12 sm:w-12"
+						aria-label="Foto siguiente">
+						<i data-lucide="chevron-right" class="h-5 w-5"></i>
+					</button>
+				</div>
+
+				<!-- Texto -->
+				<div class="mx-auto w-full max-w-lg px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-center sm:pb-8">
+					<h3 id="lightbox-title" class="font-display text-2xl italic text-red-50"></h3>
+					<p id="lightbox-caption" class="mt-2 text-xs font-light leading-6 text-zinc-400"></p>
+				</div>
+			</div>
+		</div>
+
+		<noscript>
+			<style>
+				.js [data-reveal] {
+					opacity: 1 !important;
+					transform: none !important;
+				}
+			</style>
+		</noscript>
+
+		<!-- Iconos Lucide -->
+		<script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+
+		<script>
+			/* ============================================================
+       Inicialización general
+       ============================================================ */
+			document.addEventListener('DOMContentLoaded', () => {
+				if (window.lucide) {
+					window.lucide.createIcons({ attrs: { 'stroke-width': 1.7 } });
+				}
+				initScrollProgress();
+				initRevealOnScroll();
+				initDetailCarousel();
+				initLightbox();
+				initPlayfulNo();
+				initHeartBurst();
+			});
+
+			const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+			/* ============================================================
+       Barra de progreso de lectura
+       ============================================================ */
+			function initScrollProgress() {
+				const bar = document.getElementById('scroll-progress');
+				if (!bar) return;
+
+				const update = () => {
+					const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+					const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+					bar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+				};
+
+				update();
+				window.addEventListener('scroll', update, { passive: true });
+				window.addEventListener('resize', update);
+			}
+
+			/* ============================================================
+       Aparición suave al hacer scroll
+       ============================================================ */
+			function initRevealOnScroll() {
+				const elements = document.querySelectorAll('[data-reveal]');
+				if (!elements.length) return;
+
+				if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+					elements.forEach((el) => el.classList.add('is-visible'));
+					return;
+				}
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add('is-visible');
+								observer.unobserve(entry.target);
+							}
+						});
+					},
+					{
+						threshold: 0.12,
+						rootMargin: '0px 0px -6% 0px',
+					},
+				);
+
+				elements.forEach((el) => observer.observe(el));
+			}
+
+			/* ============================================================
+       Carrusel de detalles
+       ============================================================ */
+			function initDetailCarousel() {
+				const track = document.getElementById('detail-track');
+				const prev = document.getElementById('detail-prev');
+				const next = document.getElementById('detail-next');
+				const progress = document.getElementById('detail-progress');
+				if (!track || !prev || !next || !progress) return;
+
+				const getStep = () => {
+					const card = track.querySelector('.detail-card');
+					if (!card) return track.clientWidth * 0.8;
+					const styles = window.getComputedStyle(track);
+					const gap = parseFloat(styles.columnGap || styles.gap || '16') || 16;
+					return card.getBoundingClientRect().width + gap;
+				};
+
+				const updateControls = () => {
+					const maxScroll = track.scrollWidth - track.clientWidth;
+					const atStart = track.scrollLeft <= 4;
+					const atEnd = track.scrollLeft >= maxScroll - 4;
+
+					prev.disabled = atStart;
+					next.disabled = atEnd;
+
+					const ratio = maxScroll > 0 ? track.scrollLeft / maxScroll : 0;
+					const minWidth = 12;
+					progress.style.width = `${minWidth + ratio * (100 - minWidth)}%`;
+				};
+
+				const scrollByCard = (direction) => {
+					track.scrollBy({ left: direction * getStep(), behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+				};
+
+				prev.addEventListener('click', () => scrollByCard(-1));
+				next.addEventListener('click', () => scrollByCard(1));
+
+				track.addEventListener('scroll', updateControls, { passive: true });
+				window.addEventListener('resize', updateControls);
+
+				// Permite desplazar con el teclado cuando el carrusel está enfocado.
+				track.addEventListener('keydown', (event) => {
+					if (event.key === 'ArrowRight') {
+						event.preventDefault();
+						scrollByCard(1);
+					}
+					if (event.key === 'ArrowLeft') {
+						event.preventDefault();
+						scrollByCard(-1);
+					}
+				});
+
+				updateControls();
+			}
+
+			/* ============================================================
+       Lightbox de la galería con teclado y gestos táctiles
+       ============================================================ */
+			function initLightbox() {
+				const lightbox = document.getElementById('lightbox');
+				const cards = Array.from(document.querySelectorAll('[data-memory]'));
+				const image = document.getElementById('lightbox-img');
+				const title = document.getElementById('lightbox-title');
+				const caption = document.getElementById('lightbox-caption');
+				const counter = document.getElementById('lightbox-count');
+				const closeBtn = document.getElementById('lightbox-close');
+				const prevBtn = document.getElementById('lightbox-prev');
+				const nextBtn = document.getElementById('lightbox-next');
+				if (!lightbox || !cards.length || !image || !title || !caption || !counter) return;
+
+				let currentIndex = 0;
+				let lastFocusedElement = null;
+				let touchStartX = 0;
+				let touchStartY = 0;
+
+				const memories = cards.map((card) => ({
+					src: card.dataset.src,
+					alt: card.dataset.alt || '',
+					title: card.dataset.title || '',
+					caption: card.dataset.caption || '',
+				}));
+
+				const render = (index) => {
+					currentIndex = (index + memories.length) % memories.length;
+					const memory = memories[currentIndex];
+
+					image.src = memory.src;
+					image.alt = memory.alt;
+					title.textContent = memory.title;
+					caption.textContent = memory.caption;
+					counter.textContent = `${String(currentIndex + 1).padStart(2, '0')} / ${String(memories.length).padStart(2, '0')}`;
+				};
+
+				const open = (index, trigger) => {
+					lastFocusedElement = trigger || document.activeElement;
+					render(index);
+					lightbox.classList.add('is-open');
+					lightbox.setAttribute('aria-hidden', 'false');
+					document.body.classList.add('lightbox-open');
+					closeBtn.focus({ preventScroll: true });
+				};
+
+				const close = () => {
+					lightbox.classList.remove('is-open');
+					lightbox.setAttribute('aria-hidden', 'true');
+					document.body.classList.remove('lightbox-open');
+					if (lastFocusedElement) lastFocusedElement.focus({ preventScroll: true });
+				};
+
+				cards.forEach((card, index) => {
+					card.addEventListener('click', () => open(index, card));
+				});
+
+				closeBtn.addEventListener('click', close);
+
+				lightbox.querySelectorAll('[data-lightbox-close]').forEach((el) => {
+					el.addEventListener('click', close);
+				});
+
+				prevBtn.addEventListener('click', () => render(currentIndex - 1));
+				nextBtn.addEventListener('click', () => render(currentIndex + 1));
+
+				// Navegación con teclado
+				document.addEventListener('keydown', (event) => {
+					if (!lightbox.classList.contains('is-open')) return;
+
+					if (event.key === 'Escape') close();
+					if (event.key === 'ArrowLeft') render(currentIndex - 1);
+					if (event.key === 'ArrowRight') render(currentIndex + 1);
+				});
+
+				// Deslizar en móvil
+				lightbox.addEventListener(
+					'touchstart',
+					(event) => {
+						touchStartX = event.changedTouches[0].screenX;
+						touchStartY = event.changedTouches[0].screenY;
+					},
+					{ passive: true },
+				);
+
+				lightbox.addEventListener(
+					'touchend',
+					(event) => {
+						const deltaX = event.changedTouches[0].screenX - touchStartX;
+						const deltaY = event.changedTouches[0].screenY - touchStartY;
+
+						// Solo interpreta el gesto si fue claramente horizontal.
+						if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+							render(currentIndex + (deltaX < 0 ? 1 : -1));
+						}
+					},
+					{ passive: true },
+				);
+			}
+
+			/* ============================================================
+       Botón "No" que esquiva el cursor y cambia de texto
+       ============================================================ */
+			function initPlayfulNo() {
+				const zone = document.getElementById('no-zone');
+				const button = document.getElementById('no-btn');
+				if (!zone || !button) return;
+
+				const phrases = ['Piénsalo bien 👀', '¿Segura? 🥺', 'Imposible decir que no', 'El “no” sale corriendo…', 'Mejor un sí 💜', 'Última oportunidad 😌', 'El “no” no está disponible'];
+
+				let attempts = 0;
+				let hasMoved = false;
+
+				const moveButton = () => {
+					if (prefersReducedMotion) return;
+
+					const zoneRect = zone.getBoundingClientRect();
+					const buttonRect = button.getBoundingClientRect();
+					const padding = 6;
+					const maxX = Math.max(padding, zoneRect.width - buttonRect.width - padding);
+					const maxY = Math.max(padding, zoneRect.height - buttonRect.height - padding);
+
+					// Evita que el botón se quede casi en el mismo lugar.
+					const randomX = padding + Math.random() * Math.max(1, maxX - padding);
+					const randomY = padding + Math.random() * Math.max(1, maxY - padding);
+
+					button.style.left = `${randomX}px`;
+					button.style.top = `${randomY}px`;
+					button.style.transform = 'none';
+					hasMoved = true;
+				};
+
+				const react = () => {
+					attempts += 1;
+					button.textContent = phrases[Math.min(attempts, phrases.length - 1)];
+					button.classList.remove('shake');
+					void button.offsetWidth; // Reinicia la animación
+					button.classList.add('shake');
+					moveButton();
+				};
+
+				button.addEventListener('pointerenter', (event) => {
+					if (event.pointerType === 'mouse' || event.pointerType === 'pen') {
+						react();
+					}
+				});
+
+				button.addEventListener('click', () => {
+					react();
+					if (navigator.vibrate) navigator.vibrate(12);
+				});
+
+				// Mantiene el botón dentro de su zona si cambia el tamaño de la pantalla.
+				window.addEventListener('resize', () => {
+					if (!hasMoved || prefersReducedMotion) return;
+					const zoneRect = zone.getBoundingClientRect();
+					const buttonRect = button.getBoundingClientRect();
+					const currentLeft = parseFloat(button.style.left || '0');
+					const currentTop = parseFloat(button.style.top || '0');
+					const maxLeft = Math.max(0, zoneRect.width - buttonRect.width - 6);
+					const maxTop = Math.max(0, zoneRect.height - buttonRect.height - 6);
+
+					button.style.left = `${Math.min(currentLeft, maxLeft)}px`;
+					button.style.top = `${Math.min(currentTop, maxTop)}px`;
+				});
+			}
+
+			/* ============================================================
+       Pequeña explosión de corazones al decir que sí
+       ============================================================ */
+			function initHeartBurst() {
+				const button = document.getElementById('yes-btn');
+				if (!button || prefersReducedMotion) return;
+
+				button.addEventListener('click', () => {
+					const rect = button.getBoundingClientRect();
+
+					for (let i = 0; i < 12; i += 1) {
+						const heart = document.createElement('span');
+						heart.className = 'heart-particle';
+						heart.textContent = i % 3 === 0 ? '💜' : i % 2 === 0 ? '🖤' : '❤️';
+						heart.style.left = `${rect.left + rect.width / 2 + (Math.random() - 0.5) * 150}px`;
+						heart.style.top = `${rect.top + rect.height / 2}px`;
+						heart.style.setProperty('--heart-x', `${(Math.random() - 0.5) * 170}px`);
+						heart.style.setProperty('--heart-y', `${-80 - Math.random() * 130}px`);
+						heart.style.setProperty('--heart-r', `${(Math.random() - 0.5) * 90}deg`);
+						heart.style.fontSize = `${12 + Math.random() * 14}px`;
+						heart.style.animationDelay = `${Math.random() * 0.12}s`;
+						document.body.appendChild(heart);
+						window.setTimeout(() => heart.remove(), 1600);
+					}
+				});
+			}
+		</script>
+	</body>
+</html>
